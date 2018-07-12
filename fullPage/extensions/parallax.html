@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+
+<!-- Mirrored from alvarotrigo.com/fullPage/extensions/parallax.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Jul 2018 10:22:15 GMT -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Parallax</title>
+	<meta name="author" content="Alvaro Trigo Lopez" />
+	<meta name="description" content="Parallax Scrolling fullPage.js Extension." />
+	<meta name="keywords"  content="fullpage,extension,addon,plugin,parallax,parallax scrolling, parallax snapping,scrollbar, parallax backgrounds, parallax images" />
+	<meta name="Resource-type" content="Document" />
+
+	<link rel="stylesheet" type="text/css" href="../jquery.fullPage.css" />
+	<link rel="stylesheet" type="text/css" href="../examples/examples.css" />
+	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,900" rel="stylesheet">
+
+	<meta property="og:title" content="New parallax effect!">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="New parallax effect for fullPage.js! Check it out!">
+    <meta property="og:image" content="imgs/promo/parallax.png">
+    <meta property="og:url" content="parallax.html">
+	<meta name="twitter:card" content="photo">
+    <meta name="twitter:site" content="@imac2">
+    <meta name="twitter:creator" content="@imac2">
+    <meta name="twitter:title" content="New parallax effect!">
+    <meta name="twitter:description" content="New parallax effect for fullPage.js! Check it out!">
+    <meta name="twitter:image" content="imgs/promo/parallax.png">
+    <meta name="twitter:url" content="parallax.html">
+
+
+	<!--[if IE]>
+		<script type="text/javascript">
+			 var console = { log: function() {} };
+		</script>
+	<![endif]-->
+
+	
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/jquery.easings.min.js"></script>
+	<script src="../js/fullpage.parallax.limited.min30f4.js?v="></script>
+	<script src="../js/jquery.fullpage.extensions.min.js"></script>
+	
+
+	<!-- WARNING!! -->
+	<!-- This file is limited. You can't use it to test the extension! It won't work. -->
+	<!-- You have to purchase it to try it as detailed in the FAQs:  -->
+	<!-- https://alvarotrigo.com/fullPage/extensions/faqs.html-->
+	
+	<!-- END WARNING-->
+
+	<!-- Google anlytics (Do not copy this!!)-->
+	<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','../../../www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-94005074-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+    <!-- Facebook Pixel Code (Do not copy this!!)-->
+    <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','../../../connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1786065945027357'); // Insert your pixel ID here.
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1786065945027357&amp;ev=PageView&amp;noscript=1"
+    /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+
+	<script type="text/javascript">
+	$(document).ready(function() {
+
+		// Initializing fullpage.js
+		initialize(false);
+
+		function initialize(hasScrollBar){
+			$('#myContainer').fullpage({
+				anchors: ['firstPage', 'secondPage', '3rdPage', '4thpage'],
+				menu: '#menu',
+				slidesNavigation: true,
+				parallax: true,
+				parallaxKey: 'YWx2YXJvdHJpZ28uY29tXzlNZGNHRnlZV3hzWVhnPTFyRQ==',
+				parallaxOptions: {
+					type: 'reveal',
+					percentage: 62,
+					property: 'translate'
+				},
+				scrollingSpeed: 1000,
+				autoScrolling: true,
+				scrollBar: hasScrollBar,
+				fitToSection:false
+			});
+		}
+
+		$('#turnOn').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$.fn.fullpage.parallax.init();
+		});
+
+		$('#turnOff').click(function(){
+			$(this).addClass('active').siblings().removeClass('active');
+			$.fn.fullpage.parallax.destroy();
+		});
+
+		// Applying the different options when changing the select boxes
+		$("select").change(function (){
+			var fullPageOption = $(this).data('option');
+			var value = $(this).val();
+
+			if(fullPageOption === 'offset'){
+				$.fn.fullpage.parallax.setOption('offset', value);
+			}
+
+			else if(fullPageOption === 'type'){
+				$.fn.fullpage.parallax.setOption('type', value);
+			}
+
+			else if(fullPageOption === 'autoScrolling'){
+				$.fn.fullpage.setAutoScrolling(value === 'true');
+			}
+
+			// scrollBar
+			// Because there's no method `setScrollBar` we have to destryo and initialice fullPage.js again
+			// but this time we'll initialice it again with the scrollBar:true option
+			else{
+				$.fn.fullpage.destroy('all');
+				initialize(value === 'true');
+			}
+		});
+	});
+	</script>
+
+	<style>
+		h1{
+			font-weight: 900;
+			font-size: 8em;
+			-webkit-text-shadow: 0 .3rem .9rem rgba(0,0,0,.4);
+			text-shadow: 0 0.3rem 0.9rem rgba(0,0,0,.4);
+			letter-spacing: -3px;
+		}
+		h1,
+		.intro p{
+			color: #fff;
+			font-family: 'Source Sans Pro', sans-serif;
+		}
+		.intro p{
+			text-shadow: -1px 1px 8px rgba(0,0,0,.8);
+		}
+		#section1 h1{
+			-webkit-text-shadow: none;
+			text-shadow: none;
+		}
+		#slide1-1 h1{
+			color: #444;
+		}
+		/*
+		* Setting the backgrounds for each section / slide
+		*/
+		#section4 .fp-bg:before,
+		#section2 .fp-bg:before{
+			content: '';
+			position: absolute;
+			display: block;
+			background: rgba(173, 173, 173, 0.2);
+			top:0;
+			bottom:0;
+			height: 100%;
+			width: 100%;
+		}
+		.fp-bg{
+			background-size: cover;
+			transform: translate3d(0,0,0);
+			-webkit-backface-visibility: hidden; /* Chrome, Safari, Opera */
+    		backface-visibility: hidden;
+		}
+		#slide1-1 .fp-bg{
+			background-image: url('imgs/parallax/parallax-1-1.jpg');
+			background-position: center 80%;
+		}
+		#slide1-2 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3-2.jpg');
+		}
+		#slide1-3 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3-3.jpg');
+		}
+
+		#section2 .fp-bg{
+			background-image: url('imgs/parallax/parallax-2.jpg');
+			background-position: center 60%;
+		}
+		#section2 h1{
+			color: #fff;
+		}
+		#slide3-1 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3.jpg');
+			background-position: 50% 65%;
+		}
+		#slide3-2 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3-2.jpg');
+		}
+		#slide3-3 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3-3.jpg');
+		}
+		#slide3-4 .fp-bg{
+			background-image: url('imgs/parallax/parallax-3-4.jpg');
+		}
+		#section4 .fp-bg{
+			background-image: url('imgs/parallax/parallax-4.jpg');
+		}
+		.button a.button-purchase:hover {
+			background-color: #3cc63c !important;
+			color: #fff !important;
+		}
+		.button-purchase{
+			background: #fff !important;
+			color: #000 !important;
+		}
+		.documentation a{
+			font-size: 13px;
+			margin: 20px 0;
+			padding: 0;
+			color: #222;
+		}
+
+		/*
+		* Configurations
+		*/
+		
+		.note{
+			display: none;
+		    position: absolute;
+		    z-index: 99;
+		    color: #fff;
+		    font-size: 14px;
+		    left: 112%;
+		    bottom: -17px;
+		    width: 400px;
+		    background: rgba(0,0,0,0.3);
+		    padding: 20px;
+		}
+		.note-title{
+			margin-bottom: 10px;
+			display: block;
+		}
+		.note li{
+			padding: 2px 0;
+		    list-style: disc;
+		    margin-left: 26px;
+		}
+		.actions-compatible{
+			cursor: pointer;
+		}
+		.actions-compatible:hover .note{
+			display: block;
+		}
+		
+	</style>
+</head>
+<body>
+<ul id="menu">
+	<li data-menuanchor="firstPage"><a href="#firstPage">First slide</a></li>
+	<li data-menuanchor="secondPage"><a href="#secondPage">Second slide</a></li>
+	<li data-menuanchor="3rdPage"><a href="#3rdPage">Third slide</a></li>
+	<li data-menuanchor="4thpage"><a href="#4thpage">Fourth slide</a></li>
+</ul>
+<div id="myContainer">
+
+	<div class="section" id="section1">
+		<div class="slide" id="slide1-1">
+	        <div class="fp-bg"></div>
+			<h1>PARALLAX</h1>
+			<p>Use `parallax: true`. Made easy.</p>
+            <div class="button" id="download">
+            	<a href="https://gum.co/fullpageParallax" class="button-purchase">I want it!</a>
+            </div>
+            <p class="documentation">
+            	<a href="https://github.com/alvarotrigo/fullPage.js/wiki/Extension---Parallax">Documentation</a>
+            </p>
+
+		</div>
+		<div class="slide" id="slide1-2">
+			<div class="fp-bg"></div>
+			<div class="intro">
+				<h1>fullPage.js</h1>
+				<img src="imgs/parallax/trusted.png" />
+			</div>
+		</div>
+		<div class="slide" id="slide1-3">
+			<div class="fp-bg"></div>
+			<div class="intro">
+				<h1>Free support</h1>
+				<p>Extension issues are supported at no extra cost!</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section2">
+		<div class="fp-bg" id="section2"></div>
+		<div class="intro">
+			<h1>FLEXIBLE</h1>
+			<p>Put not limits to yourself</p>
+			<p>Use parallax even without scroll bar!</p>
+		</div>
+	</div>
+	<div class="section" id="section3">
+		<div class="slide" id="slide3-1">
+			<div class="fp-bg"></div>
+			<div class="intro">
+				<h1>TAKE CONTROL</h1>
+				<p>Totally configurable.</p>
+				<p>For sections & slides! </p>
+			</div>
+		</div>
+		<div class="slide" id="slide3-2">
+			<div class="fp-bg"></div>
+			<div class="intro">
+				<h1>GUARRANTEE</h1>
+				<p>30 days money back guarratee if no domain was activated.</p>
+			</div>
+		</div>
+		<div class="slide" id="slide3-3">
+			<div class="intro">
+				<div class="fp-bg"></div>
+				<h1>TRUSTED</h1>
+				<p>Join thoudands of other developers who trusted fullPage.js extensions!</p>
+			</div>
+		</div>
+		<div class="slide" id="slide3-4">
+			<div class="fp-bg"></div>
+			<div class="intro">
+				<h1>DOCUMENTED</h1>
+				<p>If fullPage.js is known for one thing it's for its great documentation!</p>
+			</div>
+		</div>
+	</div>
+	<div class="section" id="section4">
+		<div class="fp-bg"></div>
+		<div class="intro">
+			<h1>IMPRESS</h1>
+			<p>Take it to the next level!</p>
+		</div>
+	</div>
+</div>
+<input type="hidden" id="_4" value="3" />
+
+</body>
+
+<!-- Mirrored from alvarotrigo.com/fullPage/extensions/parallax.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 12 Jul 2018 10:22:21 GMT -->
+</html>
