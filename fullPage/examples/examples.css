@@ -68,6 +68,7 @@ p{
 	width: 50%;
 	margin: 0 auto;
 	font-size: 1.5em;
+	margin-top: 30px;
 }
 .section{
 	text-align:center;
@@ -110,7 +111,7 @@ p{
 	right:0;
 	height: 40px;
 	z-index: 70;
-	padding: 0;
+	padding:15px;
 	margin:0;
 }
 .twitter-share-button{
@@ -235,6 +236,7 @@ p{
     top: 0;
     right: 0;
     z-index: 99;
+    display: none;
     border-top: 0;
     box-shadow: 1px 0px 3px rgba(0,0,0,0.8);
 }
@@ -266,4 +268,160 @@ p{
 	background: rgba(255,255,255,0.7);
 	padding: 0px 5px;
 	line-height: 25px;
+}
+#header {
+    position: fixed;
+    top: 0;
+    width:100%;
+    background:#96522b;
+    height: 50px;
+    z-index: 70;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0px 0px 35px #000;
+
+}
+#header-inner {
+    margin: 0 auto;
+    padding: 0;
+    width: 970px;
+}
+#logo{
+    padding: 10px 0px;
+    width: 50%;
+    float: left;
+    font-size: 11px;
+}
+
+#logo h1{
+    color: #8b0000;
+    text-decoration: none;
+}
+#logo h1 span {
+    color: #f8dbdb;
+}
+
+#top-nav {
+    margin: 0 auto;
+    padding: 0px 0 0;
+    height: 37px;
+    float: right;
+}
+#top-nav ul {
+    list-style: none;
+    padding: 10px 0px;
+    height: 37px;
+    float: left;
+}
+#top-nav ul li {
+    margin: 0;
+    padding: 0 0 0 8px;
+    float: left;
+}
+#top-nav ul li a {
+    display: block;
+    margin: 0;
+    padding: 8px 20px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.clr {
+    clear: both;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    font-size: 0px;
+    line-height: 0px;
+}
+.intro {
+    position: relative; 
+   animation: animateleft 0.4s; 
+}
+/***********animation css**********/
+.line-1{
+    border-right: 2px solid rgba(255,255,255,.75);
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(44) 1s 1 normal both,
+             blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 24em;}
+}
+@keyframes blinkTextCursor{
+  from{border-right-color: rgba(255,255,255,.75);}
+  to{border-right-color: transparent;}
+}
+
+.title-c{
+	border-bottom: 4px solid #fff;
+	max-width: 23%;
+	margin:0 auto;
+}
+.title-a{
+	border-bottom: 4px solid #fff;
+	max-width: 28%;
+	margin:0 auto;
+}
+.title-b{
+	border-bottom: 4px solid #fff;
+	max-width: 50%;
+	margin:0 auto;
+}
+.title-d{
+	border-bottom: 4px solid #fff;
+	max-width: 25%;
+	margin:0 auto;
+}
+/*body{
+	overflow-y: scroll!important;
+	overflow-x: hidden;
+}*/
+
+
+/*****button**********/
+.button {
+  border-radius: 4px;
+  background-color: #96522b;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px;
+  padding: 6px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
 }
